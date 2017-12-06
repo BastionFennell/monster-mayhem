@@ -1,0 +1,12 @@
+{
+  "name": "monster-mayhem",
+  "version": "0.1",
+  "description": "Monster Mayhem, West Coast Swing event in Austin, TX",
+  "main": "app.js",
+  "author": "Bastion Fennell",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
