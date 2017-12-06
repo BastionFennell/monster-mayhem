@@ -1,26 +1,19 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { createElement } from 'react';
+import { routeNode } from 'react-router5';
+import LandingPage from './pages/landing-page';
+import Users from './pages/users';
 import './App.css';
 
-class App extends Component {
-    state = {users: []}
+const components = {
+    'landing-page': LandingPage,
+    'users':   Users
+};
 
-    componentDidMount() {
-        fetch('/users')
-            .then(res => res.json())
-            .then(users => this.setState({ users }));
-    }
+function App(props) {
+    const { route } = props;
+    const segment = route.name.split('.')[0];
 
-    render() {
-        return (
-            <div className="App">
-            <h1>Users</h1>
-            {this.state.users.map(user =>
-                <div key={user.id}>{user.username}</div>
-            )}
-            </div>
-        );
-    }
+    return createElement(components[segment]);
 }
 
-export default App;
+export default routeNode('')(App);
